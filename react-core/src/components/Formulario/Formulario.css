@@ -1,0 +1,22 @@
+.formularioWrapper {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.formularioWrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formularioField {
+  display: flex;
+  gap: 1rem;
+}
+
+.formularioSubmit {
+  background-color: #58ceff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}

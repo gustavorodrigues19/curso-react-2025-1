@@ -1,26 +1,42 @@
-import BemVindo from "./components/BemVindo";
-import Saudacao from "./components/Saudacao";
+import { useState } from "react";
+function ListaTarefas() {
+  const [task, setTask] = useState("");
+  const [taskList] = useState(["item 1"]);
 
-function ListaItems(props) {
   return (
-    <>
-      <h3>Lista de items</h3>
+    <div>
+      <h1>Lista de tarefas</h1>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log("entrou aqui", task);
+          setTask("");
+        }}
+      >
+        <input
+          type="text"
+          value={task}
+          placeholder="Adicionar tarefa"
+          onChange={(e) => setTask(e.target.value)}
+        />
+        <button>Adicionar</button>
+      </form>
       <ul>
-        {props.items.map((item) => (
-          <li>{item}</li>
+        {taskList.map((item, key) => (
+          <li key={`todo-item-${key}`}>
+            {item} <button>Remover</button>
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
-      <BemVindo />
-      <Saudacao nome="Gustavo 1" />
-      <ListaItems items={["maça", "pera"]} />
+      <h1>State</h1>
+      <ListaTarefas />
     </div>
   );
 }
