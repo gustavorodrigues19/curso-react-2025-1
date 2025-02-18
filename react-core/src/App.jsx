@@ -1,19 +1,24 @@
 import { Link } from "react-router";
 
 function App() {
-  const items = [{ to: "", name: "" }];
+  const items = [
+    { to: "/bem-vindo", name: "Bem vindo" },
+    { to: "/contador", name: "Contador" },
+    { to: "/listar-items", name: "Listar items" },
+    { to: "/listar-posts", name: "Listar posts" },
+    { to: "/relogio", name: "Relogio" },
+    { to: "/relogio-funcional", name: "Relogio Funcional" },
+    { to: "/saudacao", name: "Saudacao" },
+  ];
+
   return (
     <div>
       <ul>
-        <li>
-          <Link to="/bem-vindo">Bem vindo</Link>
-        </li>
-        <li>Contador</li>
-        <li>Listar items</li>
-        <li>Listar posts</li>
-        <li>Relogio</li>
-        <li>Relogio Funcional</li>
-        <li>Saudacao</li>
+        {items.map((item, key) => (
+          <li key={`link-item-${key}`}>
+            <Link to={item.to}>{item.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
