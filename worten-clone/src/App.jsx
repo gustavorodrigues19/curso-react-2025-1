@@ -1,20 +1,30 @@
-import { useAuthContext } from "./context/AuthContext";
-import LoginForm from "./components/LoginForm";
+import HomePage from "./pages/index.jsx";
+import DashboardPage from "./pages/dashboard";
+import CartPage from "./pages/cart";
+import ProductListPage from "./pages/products";
+import { BrowserRouter, Routes, Route } from "react-router";
+import AuthContextProvider from "./context/AuthContext.jsx";
+import CartContextProvider, { useCartContext } from "./context/CartContext.jsx";
+import Layout from "./components/Layout";
 
 function App() {
-  const { user, handleUser } = useAuthContext();
+  const { cart } = useCartContext();
 
   return (
-    <main className="h-screen flex flex-col items-center justify-center ">
-      <h1 className="text-red-500 text-2xl font-bold mb-4">Worten</h1>
-      <div className="min-w-xs">
-        <h3 className="text-red-500 font-bold text-md border-b border-slate-400 pb-2">
-          Iniciar Sessão
-        </h3>
-        {JSON.stringify(user)}
-        <LoginForm handleUser={handleUser} />
-      </div>
-    </main>
+    <AuthContextProvider>
+      <CartContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Layout cart={cart?.items} />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/products" element={<ProductListPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CartContextProvider>
+    </AuthContextProvider>
   );
 }
 

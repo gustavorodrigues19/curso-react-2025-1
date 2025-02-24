@@ -21,6 +21,7 @@ export default function LoginForm({ handleUser }) {
       formValues.email === "gustavo@gmail.com" &&
       formValues.password === "12345"
     ) {
+      // ID e nome vêm do backend, mas por enquanto vamos simular
       handleUser({
         id: 1,
         name: "Gustavo",
