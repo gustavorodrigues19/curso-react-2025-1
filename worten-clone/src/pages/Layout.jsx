@@ -1,8 +1,9 @@
 import { Outlet } from "react-router";
 import { useNavigate } from "react-router";
+import { useCartContext } from "../context/CartContext";
 
-export default function Layout({ cart }) {
-  const cartCount = cart?.length ?? 0;
+export default function Layout() {
+  const { cart } = useCartContext();
   const navigate = useNavigate();
 
   return (
@@ -20,7 +21,7 @@ export default function Layout({ cart }) {
             🛒
           </span>
           <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-            {cartCount}
+            {cart?.cartQuantity ?? 0}
           </span>
         </div>
       </header>
