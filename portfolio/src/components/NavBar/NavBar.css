@@ -1,0 +1,30 @@
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  z-index: 10;
+}
+
+.nav-menu > h1 {
+  color: blue;
+}
+
+.nav-menu-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-menu-icon {
+    display: none;
+  }
+
+  .nav-menu-desktop {
+    display: flex;
+    list-style: none;
+  }
+
+  .nav-menu-desktop > li {
+    padding: 0.5rem;
+  }
+}
